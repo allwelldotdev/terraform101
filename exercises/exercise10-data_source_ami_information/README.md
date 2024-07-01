@@ -1,3 +1,3 @@
-# Using Data Sources to Fetch AMI Informatino
+# Using Data Sources to Fetch AMI Information
 
 In this exercise, I explored the use of AWS data sources in Terraform to retrieve the recent Ubuntu Amazon Machine Image (AMI). I defined an output variable to print the ID of the retrieved AMI and used the ID to configure an AWS instance resource. This hands-on exercise gave me practical experience in handling AWS AMIs and configuring AWS instances using Terraform.
