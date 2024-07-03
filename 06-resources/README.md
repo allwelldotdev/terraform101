@@ -10,4 +10,4 @@ In this project, I deploy an NGINX server in AWS. I will create a new VPC, set u
 4. [DONE] Deploy an EC2 instance inside of the created subnet and associate a public IP
 5. [DONE] Associate a security group that allows public ingress
 6. [DONE] Change the EC2 instance to use a publicly available NGINX AMI
-7. Destroy everything
+7. [DONE] Destroy everything
