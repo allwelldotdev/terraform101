@@ -1,20 +1,24 @@
 resource "aws_instance" "web" {
   # ubuntu AMI : ami-04a81a99f5ec58529
-  # NGINX AMI : 
-  ami                         = "ami-04a81a99f5ec58529"
+  # NGINX AMI : ami-0fa9d9b01b8f58ee1
+  ami                         = "ami-0fa9d9b01b8f58ee1"
   associate_public_ip_address = true
   instance_type               = "t2.micro"
   subnet_id                   = aws_subnet.public.id
   vpc_security_group_ids      = [aws_security_group.public_http_traffic.id]
   root_block_device {
     delete_on_termination = true
-    volume_size           = 8
+    volume_size           = 10
     volume_type           = "gp3"
   }
 
   tags = merge(local.common_tags, {
     Name = "06-resources-ec2"
   })
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_security_group" "public_http_traffic" {
