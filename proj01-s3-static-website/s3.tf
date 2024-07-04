@@ -21,8 +21,12 @@ resource "aws_s3_bucket_policy" "static_website_public_read" {
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
-      Sid       = "PublicReadGetObject"
-      Action    = ["s3:GetObject"]
+      Sid = "PublicRead-GetObject-GetObjectACL-PutObjectACL"
+      Action = [
+        "s3:GetObject",
+        "s3:GetObjectAcl",
+        "s3:PutObjectAcl"
+      ]
       Effect    = "Allow"
       Resource  = "${aws_s3_bucket.static_website.arn}/*"
       Principal = "*"
@@ -82,6 +86,7 @@ resource "aws_s3_object" "img_dropdown" {
   source       = "build/img/dropdown.svg"
   etag         = filemd5("build/img/dropdown.svg")
   content_type = "img/svg"
+  acl          = "public-read"
 }
 
 resource "aws_s3_object" "img_eye" {
@@ -90,6 +95,7 @@ resource "aws_s3_object" "img_eye" {
   source       = "build/img/eye.svg"
   etag         = filemd5("build/img/eye.svg")
   content_type = "img/svg"
+  acl          = "public-read"
 }
 
 resource "aws_s3_object" "img_logo" {
@@ -98,6 +104,7 @@ resource "aws_s3_object" "img_logo" {
   source       = "build/img/logo.svg"
   etag         = filemd5("build/img/logo.svg")
   content_type = "img/svg"
+  acl          = "public-read"
 }
 
 resource "aws_s3_object" "img_date" {
@@ -106,5 +113,6 @@ resource "aws_s3_object" "img_date" {
   source       = "build/img/date.svg"
   etag         = filemd5("build/img/date.svg")
   content_type = "img/svg"
+  acl          = "public-read"
 }
 
