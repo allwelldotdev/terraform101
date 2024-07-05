@@ -9,3 +9,5 @@ additional_tags = {
   "Name" = "08-ec2-resource"
   "Env"  = "Dev"
 }
+
+my_sensitive_value = "sensitive" # this is a value I used to test the 'sensitive' attribute in Terraform for outputs and variables.
