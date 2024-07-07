@@ -17,3 +17,8 @@ Here,  I learned how to manage multiple EC2 instances with unique configurations
 ### From commit: "add validation to map variable"
 Having learned how to add validations to list variables in the former commit, here, I used a similar method to add validation to the map variable configuration that I used to deploy EC2 instances.
 What I do differently here? I used the `values()` function in Terraform that iterates through a map of objects with key-value pairs and returns the values.
+
+### From commit: "ext config to receive subnet info"
+Finally, instead of hard-coding the subnet config in the `networking.tf` file, I created a map variable for subnet info, added a validation rule for CIDR blocks, and refactored `aws_subnet.main` AWS subnet resource block.
+This exercise improved my knowledge of Terraform, and showed just how powerful and reliable Terraform is as an infrastructure as code tool in the management of Cloud platforms.
+I also refactored a lot of my old code.
