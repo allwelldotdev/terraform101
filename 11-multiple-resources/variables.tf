@@ -27,4 +27,10 @@ variable "ec2_instance_config_list" {
   }
 }
 
+variable "ec2_instance_config_map" {
+  type = map(object({
+    instance_type = string
+    ami           = string
+  }))
+}
 

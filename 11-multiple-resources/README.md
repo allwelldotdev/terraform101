@@ -9,3 +9,7 @@ I extended the Amazon Machine Images (AMIs) to include NGINX, a popular open-sou
 ### From commit: "add validation to list variable" 
 I learned how to add validation for an EC2 instance configuration list in Terraform. From the defined variable `ec2_instance_config_list`, I added validation checks to ensure that only `t2.micro` instances and `ubuntu` or `nginx` images are used. A valuable skill that will help me ensure the correctness and reliability of my Terraform configurations.
 
+### From commit: "deploy multiple ec2 from map variable"
+Deployed EC2 instances from a map variable configuration.
+I created a map variable to hold the configuration for each EC2 instance, and then used a `for_each` loop to iterate over each item in the map and create an EC2 instance with the provided configuration.
+Here,  I learned how to manage multiple EC2 instances with unique configurations using a map object in Terraform. A crucial skill for managing complex Terraform projects and ensuring that my infrastructure is flexible and easily configurable.
