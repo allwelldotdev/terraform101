@@ -13,3 +13,7 @@ I learned how to add validation for an EC2 instance configuration list in Terraf
 Deployed EC2 instances from a map variable configuration.
 I created a map variable to hold the configuration for each EC2 instance, and then used a `for_each` loop to iterate over each item in the map and create an EC2 instance with the provided configuration.
 Here,  I learned how to manage multiple EC2 instances with unique configurations using a map object in Terraform. A crucial skill for managing complex Terraform projects and ensuring that my infrastructure is flexible and easily configurable.
+
+### From commit: "add validation to map variable"
+Having learned how to add validations to list variables in the former commit, here, I used a similar method to add validation to the map variable configuration that I used to deploy EC2 instances.
+What I do differently here? I used the `values()` function in Terraform that iterates through a map of objects with key-value pairs and returns the values.

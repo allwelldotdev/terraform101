@@ -32,5 +32,15 @@ variable "ec2_instance_config_map" {
     instance_type = string
     ami           = string
   }))
+
+  validation {
+    condition     = alltrue([for key, config in var.ec2_instance_config_map : contains(["t2.micro"], config.instance_type)])
+    error_message = "Only t2.micro instances are allowed."
+  }
+
+  validation {
+    condition     = alltrue([for config in values(var.ec2_instance_config_map) : contains(["ubuntu", "nginx"], config.ami)])
+    error_message = "At least one of the provided \"ami\" values is not supported.\nSupported \"ami\" values: \"ubuntu\", \"nginx\"."
+  }
 }
 
