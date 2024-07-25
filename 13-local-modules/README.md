@@ -10,4 +10,4 @@ A networking module that should:
    3. [DONE] The user should be able to mark a subnet as public or private
       1. [DONE] If at least one subnet is public, we need to deploy an IGW
       2. [DONE] We need to associate the public subnets with a public RTB
-3. Define the module's outputs. Expose some module information using the module's `outputs.tf` file.
+3. [DONE] Define the module's outputs. Expose some module information using the module's `outputs.tf` file.
