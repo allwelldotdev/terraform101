@@ -40,7 +40,19 @@ module "vpc" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| [vpc_config](#vpc_config) | An object that contains and sets the VPC configuration | `object()` | <pre>vpc_config = {<br>  cidr_block = null<br>  name       = null<br>}</pre> | yes |
-| cidr_block | An attribute in [vpc_config](#vpc_config) used to set CIDR blocks | `string` | `null` | yes |
- 
+| <a name="vpc_config"></a> [vpc_config](#vpc_config) | An object that contains and sets the VPC configuration | `object()` | <pre>{<br>  cidr_block = null<br>  name       = null<br>}</pre> | yes |
+| <a name="vpc_config-cidr_block"></a> [cidr_block](#vpc_config-cidr_block) | An attribute in [vpc_config](#vpc_config) used to set CIDR block | `string` | `null` | yes |
+| <a name="vpc_config-name"></a> [name](#vpc_config-name) | An attribute in [vpc_config](#vpc_config) used to set VPC name | `string` | `null` | no |
+| <a name="subnet_config"></a> [subnet_config](#subnet_config) | An object that contains and sets VPC Subnet configuration | `map(object())` | <pre>{<br>  subnet_1 = {<br>      cidr_block = null<br>      az         = null<br>      public     = false<br>    }<br>}</pre> | no |
+| <a name="subnet_config-cidr_block"></a> [cidr_block](#subnet_config-cidr_block) | An attribute in [subnet_config](#subnet_config) used to set VPC subnet CIDR block | `string` | `null` | no |
+| <a name="subnet_config-az"></a> [az](#subnet_config-az) | An attribute in [subnet_config](#subnet_config) used to set VPC subnet availability zone  | `string` | `null` | no |
+| <a name="subnet_config-public"></a> [public](#subnet_config-public) | An attribute in [subnet_config](#subnet_config) used to set if VPC subnet is public or private  | `bool` | `false` | no |
+
+## Outputs
+
+| Name | Description |
+| ---- | ----------- |
+| <a name="vpc_id"></a> [vpc_id](#vpc_id) | The ID of the VPC |
+| <a name="public_subnets"></a> [public_subnets](#public_subnets) | A map of objects containing each public VPC subnet's ID and availability zone |
+| <a name="private_subnets"></a> [private_subnets](#private_subnets) | A map of objects containing each VPC subnet's ID and availability zone of private subnets |
 

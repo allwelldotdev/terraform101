@@ -24,11 +24,11 @@ output "vpc_id" {
 }
 
 output "public_subnets" {
-  description = "The ID and availability zone of public subnets."
+  description = "A map of objects containing each public VPC subnet's ID and availability zone."
   value       = local.output_public_subnets
 }
 
 output "private_subnets" {
-  description = "The ID and availability zone of private subnets."
+  description = "A map of objects containing each VPC subnet's ID and availability zone of private subnets."
   value       = local.output_private_subnets
 }
