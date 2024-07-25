@@ -2,6 +2,10 @@ locals {
   public_subnets = {
     for k, v in var.subnet_config : k => v if v.public
   }
+
+  private_subnets = {
+    for k, v in var.subnet_config : k => v if !v.public
+  }
 }
 
 data "aws_availability_zones" "this" {
