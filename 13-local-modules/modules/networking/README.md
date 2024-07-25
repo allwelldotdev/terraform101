@@ -35,3 +35,12 @@ module "vpc" {
 }
 
 ```
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| [vpc_config](#vpc_config) | An object that contains and sets the VPC configuration | `object()` | <pre>vpc_config = {<br>  cidr_block = null<br>  name       = null<br>}</pre> | yes |
+| cidr_block | An attribute in [vpc_config](#vpc_config) used to set CIDR blocks | `string` | `null` | yes |
+ 
+
