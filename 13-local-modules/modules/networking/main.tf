@@ -27,7 +27,8 @@ resource "aws_subnet" "this" {
   availability_zone = each.value.az
 
   tags = {
-    Name = "${each.key}-${var.vpc_config.name}"
+    Name   = "${each.key}-${var.vpc_config.name}"
+    Access = each.value.public ? "Public" : "Private"
   }
 
   lifecycle {

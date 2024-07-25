@@ -2,7 +2,7 @@
 
 This module manages the creation of VPCs and Subnets, allowing for the creation of both public and private subnets.
 
-Example usage:
+## Usage:
 ```hcl
 module "vpc" {
   source = "./modules/networking"
