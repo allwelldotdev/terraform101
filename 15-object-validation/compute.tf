@@ -20,6 +20,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "ubuntu" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
+  subnet_id     = aws_subnet.this.id
 
   root_block_device {
     delete_on_termination = true
@@ -28,8 +29,13 @@ resource "aws_instance" "ubuntu" {
   }
 
   lifecycle {
-    precondition {
-      condition     = contains(local.instance_type, var.instance_type)
+    # precondition {
+    #   condition     = contains(local.instance_type, var.instance_type)
+    #   error_message = "Invalid instance type"
+    # }
+
+    postcondition {
+      condition     = contains(local.instance_type, self.instance_type)
       error_message = "Invalid instance type"
     }
   }
