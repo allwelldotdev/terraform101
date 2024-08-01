@@ -19,3 +19,11 @@ Postconditions can also work like preconditions as well, if the value checked is
 Something to note: when you are checking the preconditional validation of a resource type, sometimes it's more valuable to use postconditions to check instead of preconditions. Because postconditions will give you a validation response when you run "terraform plan" if the value already exists inside the Terraform configuration. Except if the value is 'known after apply', in that case still using postconditions will give you the validation response when the resource config is applied.
 
 Therefore, it appears that to cover multiple grounds, postcondition is the better object validation block to use.
+
+### Adding Check Blocks
+
+`check` blocks are useful for warning other Terraform users of potential errors in the Terraform configuration without throwing an error that stops the configuration from running. It's a mild way to inform the user of something they should be aware of.
+
+The `check` block is not a good way to check for critical configuration validation. To do this, use the `precondition` validation instead as it allows you fail the execution if the configuration does not pass the condition.
+
+A good practise of using `check` blocks is if you want to deploy multiple subnets in different availability zones to ensure high availability.
