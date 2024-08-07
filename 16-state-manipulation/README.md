@@ -35,3 +35,18 @@ Two methods of removing tf resources:
 - Remove using the Terraform `remove {...}` block.
 
 I created a new `aws_s3_bucket` resource and removed it from my tf state file to unlink it from my Terraform IAC configuration.
+
+### Tainting & Replacing Terraform Resources
+
+In this exercise, I learned to use the `taint` command in Terraform CLI to to force a replacement for a resource that may no longer be tracked or faulty under the Terraform IAC config file or apply mode.
+
+Unlike the other state manipulation techniques in Terraform, tainting can be performed using three methods:
+- Taint using Terraform CLI with `terraform taint ['resource you want to taint']`. **Apparently, this mode has been deprecated within Terraform docs but is not specified as deprecated in the Terraform CLI help section.**
+- Taint using Terraform CLI with `terraform plan -replace=['resource you want to replace or taint']`. **This is the newer method advised by Terraform for tainting resources.**
+- Taint resource dependencies by adding lifecyle attribute `replace_triggered_by` into the resource dependency resource block.
+
+I created an `aws_s3_bucket` resource. Tainted it to replace (destroy and create) the resource. Then tainted the `aws_s3_bucket` resource dependency using the `replace_triggered_by` attribute in lifecycle block.
+
+---
+
+These Terraform state manipulation skills will enable me manage Terraform resources at an advanced level when working with a large team.
