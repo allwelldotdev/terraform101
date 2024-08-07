@@ -24,3 +24,14 @@ In this exercise, I learned how to import Terraform resources from the cloud inf
 
 I imported an `aws_s3_bucket` resource into my tf config and tweaked it using IAC code from my tf config. To ensure the resource is not mistakenly deleted when I `terraform destroy`, I set `lifecycle.prevent_destroy` to true.
 
+### Removing Terraform Resources
+
+In this exercise, I learned how to remove Terraform resources from tf state file without destroying the resource in the cloud infra, as well as how to remove Terraform resources from tf state file and destroy the resource in the cloud infra.
+
+Why would we remove the resources from tf state file and destroy the resource in the cloud infra (at the same time), since we're already simply deleting the resource from the cloud infra? Because of documentation purposes. We may want to keep or document the resources we are removing from our tf config. This is where the remove block is handy.
+
+Two methods of removing tf resources:
+- Remove using Terraform CLI with `terraform state rm ['resource to remove from tf state']`
+- Remove using the Terraform `remove {...}` block.
+
+I created a new `aws_s3_bucket` resource and removed it from my tf state file to unlink it from my Terraform IAC configuration.

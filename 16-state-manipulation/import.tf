@@ -10,29 +10,45 @@ from cloud infrastructure to Terraform config
 #   id = "add-demo-s3-v1"
 # }
 
-resource "aws_s3_bucket" "remote_state" {
-  bucket = "add-demo-s3-v1"
-
-  tags = {
-    ManagedBy = "Terraform"
-    Lifecycle = "Critical"
-  }
+removed {
+  from = aws_s3_bucket.remote_state
 
   lifecycle {
-    prevent_destroy = true
+    destroy = false
   }
 }
+
+# resource "aws_s3_bucket" "remote_state" {
+#   bucket = "add-demo-s3-v1"
+
+#   tags = {
+#     ManagedBy = "Terraform"
+#     Lifecycle = "Critical"
+#   }
+
+#   lifecycle {
+#     prevent_destroy = true
+#   }
+# }
 
 # import {
 #   to = aws_s3_bucket_public_access_block.remote_state
 #   id = "add-demo-s3-v1"
 # }
 
-resource "aws_s3_bucket_public_access_block" "remote_state" {
-  bucket = aws_s3_bucket.remote_state.id
+removed {
+  from = aws_s3_bucket_public_access_block.remote_state
 
-  block_public_acls       = false
-  block_public_policy     = false
-  ignore_public_acls      = false
-  restrict_public_buckets = false
+  lifecycle {
+    destroy = false
+  }
 }
+
+# resource "aws_s3_bucket_public_access_block" "remote_state" {
+#   bucket = aws_s3_bucket.remote_state.id
+
+#   block_public_acls       = false
+#   block_public_policy     = false
+#   ignore_public_acls      = false
+#   restrict_public_buckets = false
+# }
